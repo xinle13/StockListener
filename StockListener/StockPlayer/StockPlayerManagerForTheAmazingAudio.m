@@ -87,7 +87,9 @@
     _musicPlayer.volume = 0.001;
     _musicPlayer.loop = YES;
     _musicPlayer.channelIsMuted = YES;
-    [_audioController addChannels:@[_musicPlayer]];
+    [_audioController addChannels:@[_musicPlayer] completionBlock:^{
+        
+    }];
     [self setAllowMixing:[ConfigHelper getInstance].isPlayBackground];
 }
 
@@ -342,7 +344,9 @@
                 [weakSelf playStockSound];
             }
         };
-        [self.audioController addChannels:@[_stockPlayer]];
+        [self.audioController addChannels:@[_stockPlayer] completionBlock:^{
+            
+        }];
     }
 }
 
